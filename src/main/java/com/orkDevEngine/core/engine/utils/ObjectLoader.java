@@ -68,9 +68,19 @@ public class ObjectLoader {
                         normals.add(norms);
                     }
                     case "f" -> {
-                        faces.add(processFaces(tokens[1]));
-                        faces.add(processFaces(tokens[2]));
-                        faces.add(processFaces(tokens[3]));
+                        if(tokens.length == 4) {
+                            faces.add(processFaces(tokens[1]));
+                            faces.add(processFaces(tokens[2]));
+                            faces.add(processFaces(tokens[3]));
+                        } else if(tokens.length == 5){
+                            faces.add(processFaces(tokens[1]));
+                            faces.add(processFaces(tokens[2]));
+                            faces.add(processFaces(tokens[3]));
+
+                            faces.add(processFaces(tokens[3]));
+                            faces.add(processFaces(tokens[4]));
+                            faces.add(processFaces(tokens[1]));
+                        }
                     }
                     default -> {
                     }

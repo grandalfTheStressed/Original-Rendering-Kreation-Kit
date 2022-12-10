@@ -14,6 +14,10 @@ repositories {
 
 dependencies {
 
+    //Utils
+    implementation 'org.apache.commons:commons-lang3:3.12.0'
+    implementation 'org.apache.commons:commons-collections4:4.4'
+
     //Logging Tools
     implementation "com.google.code.gson:gson:2.10"
 
@@ -71,8 +75,8 @@ dependencies {
     implementation "org.lwjgl:lwjgl-xxhash"
     implementation "org.lwjgl:lwjgl-yoga"
     implementation "org.lwjgl:lwjgl-zstd"
-    implementation 'junit:junit:4.13.1'
-    implementation 'org.junit.jupiter:junit-jupiter:5.8.1'
+    implementation 'junit:junit:4.13.2'
+    implementation 'org.junit.jupiter:junit-jupiter:5.9.0'
     runtimeOnly "org.lwjgl:lwjgl::$lwjglNatives"
     runtimeOnly "org.lwjgl:lwjgl-assimp::$lwjglNatives"
     runtimeOnly "org.lwjgl:lwjgl-bgfx::$lwjglNatives"

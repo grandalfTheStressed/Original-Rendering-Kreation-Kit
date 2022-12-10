@@ -18,4 +18,16 @@ public class DirectionalLight extends ILight{
     public void rotateZ(float angleDeg){
         this.position.rotateZ((float)Math.toRadians(angleDeg));
     }
+
+    @Override
+    public void setPosition(Vector3f position) {
+        super.setPosition(position);
+        this.position.normalize();
+    }
+
+    @Override
+    public void setPosition(float x, float y, float z) {
+        super.setPosition(x, y, z);
+        this.position.normalize();
+    }
 }

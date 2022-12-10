@@ -78,11 +78,11 @@ vec4 calcLightColor(vec3 lightColor, float lightIntensity, vec3 fragPos, vec3 to
 
     vec3 fromLightDir = -toLightDir;
     vec3 reflectedLight = normalize(reflect(fromLightDir, fragNormal));
-    float specularFactor = max(dot(cameraDir, reflectedLight), 0.0);
+    float specularFactor = max(dot(-cameraDir, reflectedLight), 0.0);
     specularFactor = pow(specularFactor, specularPower);
     specularColor = specularC * lightIntensity * specularFactor * material.reflectance * (lightColor, 1.0);
 
-    return (diffuseColor + specularColor);
+    return (diffuseColor + specularColor + ambientC);
 }
 
 vec4 calcPointLight(PointLight light, vec3 position, vec3 normal) {
@@ -119,18 +119,18 @@ void main() {
 
     setupColors(material, fragTextureCoord);
 
-    vec4 diffuseSpecular = calcDirectionalLight(directionalLight, fragPos, fragNormal);
+    vec4 phongColor = calcDirectionalLight(directionalLight, fragPos, fragNormal);
 
     for(int i = 0; i < MAX_POINT_LIGHTS; i++) {
         if(pointLights[i].intensity > 0) {
-            diffuseSpecular += calcPointLight(pointLights[i], fragPos, fragNormal);
+            phongColor += calcPointLight(pointLights[i], fragPos, fragNormal);
         }
     }
     for(int i = 0; i < MAX_SPOT_LIGTHTS; i++) {
         if(spotLights[i].intensity > 0) {
-            diffuseSpecular += calcSpotLight(spotLights[i], fragPos, fragNormal);
+            phongColor += calcSpotLight(spotLights[i], fragPos, fragNormal);
         }
     }
 
-    fragColor = ambientC + diffuseSpecular;
+    fragColor = phongColor;
 }

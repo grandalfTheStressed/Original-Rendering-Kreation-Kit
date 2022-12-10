@@ -30,6 +30,10 @@ public abstract class ILight {
         this.position = position;
     }
 
+    public void setPosition(float x, float y, float z) {
+        this.position = new Vector3f(x,y,z);
+    }
+
     public float getIntensity() {
         return intensity;
     }

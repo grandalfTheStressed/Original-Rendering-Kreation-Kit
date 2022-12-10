@@ -35,11 +35,11 @@ public abstract class BaseEntity {
         this.subPos(new Vector3f(x,y,z));
     }
 
-    public void setPos(Vector3f vec) {
+    public void setPosition(Vector3f vec) {
         this.pos = vec;
     }
 
-    public void setPos(float x, float y, float z) {
+    public void setPosition(float x, float y, float z) {
         this.pos = new Vector3f(x,y,z);
     }
 
@@ -79,7 +79,7 @@ public abstract class BaseEntity {
         return model;
     }
 
-    public Vector3f getPos() {
+    public Vector3f getPosition() {
         return pos;
     }
 

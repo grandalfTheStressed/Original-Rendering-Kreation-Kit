@@ -1,7 +1,6 @@
 package com.orkDevEngine.core.engine.screen.rendering.managers;
 
-import com.orkDevEngine.core.engine.game.objects.managers.EntityManager;
-import com.orkDevEngine.core.engine.game.objects.managers.GameObjectEntityManager;
+import com.orkDevEngine.core.engine.game.objects.managers.ActorManager;
 import com.orkDevEngine.core.engine.lighting.LightManager;
 import com.orkDevEngine.core.engine.screen.GUI.GUI;
 import com.orkDevEngine.core.engine.screen.cameras.Camera;
@@ -16,7 +15,6 @@ import imgui.ImGuiIO;
 import imgui.flag.ImGuiConfigFlags;
 import imgui.gl3.ImGuiImplGl3;
 import imgui.glfw.ImGuiImplGlfw;
-import org.lwjgl.opengl.GPU_DEVICE;
 
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.glfw.GLFW.glfwPollEvents;
@@ -26,20 +24,21 @@ public class RenderManager implements IRenderManager{
 
     private final ImGuiImplGlfw imGuiGlfw;
     private final ImGuiImplGl3 imGuiGl3;
-    private GUI gui;
-    private PhongShaderManager shaderManager;
+    private final GUI gui;
+    private final PhongShaderManager shaderManager;
 
-    private EntityRenderer entityRenderer;
+    private final EntityRenderer entityRenderer;
 
-    private EntityManager entityManager;
+    private ActorManager actorManager;
 
-    public RenderManager(LightManager lightManager, GameObjectEntityManager gameObjectEntityManager) {
-        this.entityManager = gameObjectEntityManager;
-        this.entityRenderer = new EntityRenderer(gameObjectEntityManager);
+    public RenderManager(LightManager lightManager, ActorManager actorManager) {
+        this.actorManager = actorManager;
+        this.entityRenderer = new EntityRenderer(actorManager);
         this.imGuiGlfw = new ImGuiImplGlfw();
         this.imGuiGl3 = new ImGuiImplGl3();
         this.gui = new GUI();
-        this.gui.setEntityManager(entityManager);
+        this.gui.setActorManager(actorManager);
+        this.gui.setLightManager(lightManager);
         this.shaderManager = new PhongShaderManager(lightManager);
     }
 

@@ -1,7 +1,6 @@
 package com.orkDevEngine.core.engine.utils;
 
 import com.orkDevEngine.core.engine.game.objects.entity.BaseEntity;
-import com.orkDevEngine.core.engine.lighting.lights.DirectionalLight;
 import com.orkDevEngine.core.engine.screen.cameras.Camera;
 import org.joml.Matrix4f;
 import org.joml.Vector3f;
@@ -23,7 +22,7 @@ public class Transformation {
         Matrix4f matrix = new Matrix4f();
         matrix
                 .identity()
-                .translate(entity.getPos());
+                .translate(entity.getPosition());
         return matrix;
     }
 

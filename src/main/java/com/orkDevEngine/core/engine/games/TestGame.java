@@ -1,7 +1,7 @@
 package com.orkDevEngine.core.engine.games;
 
 import com.orkDevEngine.core.engine.game.objects.managers.EntityManager;
-import com.orkDevEngine.core.engine.game.objects.managers.GameObjectEntityManager;
+import com.orkDevEngine.core.engine.game.objects.managers.ActorManager;
 import com.orkDevEngine.core.engine.lighting.LightManager;
 import com.orkDevEngine.core.engine.screen.cameras.EditCamera;
 import com.orkDevEngine.core.engine.screen.input.KeyboardManager;
@@ -17,7 +17,7 @@ public class TestGame implements IGameLogic {
 
     private final RenderManager renderManager;
 
-    private final GameObjectEntityManager gameObjectManager;
+    private final ActorManager gameObjectManager;
     private final WindowManager window;
 
     private LightManager lightManager;
@@ -30,7 +30,7 @@ public class TestGame implements IGameLogic {
 
     public TestGame() {
         window = Main.getWindow();
-        gameObjectManager = new GameObjectEntityManager();
+        gameObjectManager = new ActorManager();
         lightManager = new LightManager();
         renderManager = new RenderManager(lightManager, gameObjectManager);
     }

@@ -1,16 +1,10 @@
 package com.orkDevEngine.core.engine.lighting;
 
-import com.orkDevEngine.core.engine.game.objects.Material;
-import com.orkDevEngine.core.engine.game.objects.Model;
-import com.orkDevEngine.core.engine.game.objects.Texture;
-import com.orkDevEngine.core.engine.game.objects.entity.GameObjectEntity;
 import com.orkDevEngine.core.engine.game.objects.managers.EntityManager;
 import com.orkDevEngine.core.engine.lighting.lights.DirectionalLight;
 import com.orkDevEngine.core.engine.lighting.lights.PointLight;
 import com.orkDevEngine.core.engine.lighting.lights.SpotLight;
-import com.orkDevEngine.core.engine.utils.ObjectLoader;
 import org.joml.Vector3f;
-import org.joml.Vector4f;
 
 import java.util.ArrayList;
 import java.util.List;
